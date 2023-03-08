@@ -63,35 +63,44 @@ function igti_register_options_page_markup() {
 		}
 
 		function do_json_stuff(the_json) {
+
+			// Limit to ONE post for testing purposes, adjust others.
+			let the_post = the_json[0];
+
+
 			// Make sure the API is ready.
 			wp.api.loadPromise.done(function() {
-				const the_first = the_json[0];
-				console.table("Data:", the_first);
 
-				const taken_at = the_first.taken_at;
-				console.table("Date Raw: ", taken_at);
+				//the_json.forEach(function(the_post) {
+
+				const taken_at = the_post.taken_at;
+				//console.table("Date Raw: ", taken_at);
 
 				const the_date = new Date((taken_at * 1000));
-				console.table("Date Converted: ", the_date);
+				//console.table("Date Converted: ", the_date);
 
-				const the_caption = the_first.caption.text;
-				console.table("Caption: ", the_caption);
+				const the_caption = (the_post.caption) ? the_post.caption.text : null;
+				//console.table("Caption: ", the_caption);
 
-				const the_images = the_first.carousel_media;
+				/* ❗❗❗❗ Waiting on the HTML IG export so I can have the imagessss.
+				
+				const the_images = the_post.carousel_media;
 				let the_images_urls = [];
 				the_images.forEach(function(img) {
 					the_images_urls.push(img.image_versions2.candidates[0].url);
 				});
-				//
-				console.table("Image URLS: ", the_images_urls);
 
-				// ❗❗❗❗ Waiting on the HTML IG export so I can have the imagessss.
+				//console.table("Image URLS: ", the_images_urls);
 
+				*/
+
+				// Start the gallery block
 				let post_content = `
-					<!-- wp:gallery {"linkTo":"none"} -->
-					<figure class="wp-block-gallery has-nested-images columns-default is-cropped">
-				`;
+						<!-- wp:gallery {"linkTo":"none"} -->
+						<figure class="wp-block-gallery has-nested-images columns-default is-cropped">
+					`;
 
+				// Add images to gallery block.
 				post_content += `
 						<!-- wp:image {"id":35,"sizeSlug":"large","linkDestination":"none"} -->
 							<figure class="wp-block-image size-large"><img src="http://igtest.local/wp-content/uploads/2023/03/one.jpg" alt="" class="wp-image-35"/></figure>
@@ -99,20 +108,22 @@ function igti_register_options_page_markup() {
 						<!-- wp:image {"id":36,"sizeSlug":"large","linkDestination":"none"} -->
 							<figure class="wp-block-image size-large"><img src="http://igtest.local/wp-content/uploads/2023/03/two.jpg" alt="" class="wp-image-36"/></figure>
 						<!-- /wp:image -->
-				`;
+					`;
 
+				// Add caption to gallery block.
 				if (the_caption) {
 					post_content += `<figcaption class="blocks-gallery-caption wp-element-caption">${the_caption}</figcaption>`;
 				}
 
+				// Close gallery block.
 				post_content += `
-					</figure>
-					<!-- /wp:gallery -->
-				`;
+						</figure>
+						<!-- /wp:gallery -->
+					`;
 
-
+				// Publish post.
 				let post = new wp.api.models.Post({
-					title: 'IG Import - ' + taken_at,
+					title: 'IG - ' + taken_at + ' - ' + the_caption,
 					status: 'publish',
 					content: post_content,
 					date: the_date
@@ -120,6 +131,9 @@ function igti_register_options_page_markup() {
 				post.save().done(function(post) {
 					console.log('🟢 Post Created: "' + post.title.raw + '"');
 				});
+
+				// Limit to ONE post for testing purposes, adjust others.
+				// }); // the_json.forEach
 
 			}) // wp.api.loadPromise.done
 		} // do_json_stuff
