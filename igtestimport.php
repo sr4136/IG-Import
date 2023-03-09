@@ -65,7 +65,9 @@ function igti_register_options_page_markup() {
 		function do_json_stuff(the_json) {
 
 			// Limit to ONE post for testing purposes, adjust others.
-			let the_post = the_json[0];
+			let the_post = the_json[18];
+
+			console.log(the_post);
 
 
 			// Make sure the API is ready.
@@ -81,18 +83,15 @@ function igti_register_options_page_markup() {
 
 				const the_caption = (the_post.caption) ? the_post.caption.text : null;
 				//console.table("Caption: ", the_caption);
-
-				/* ❗❗❗❗ Waiting on the HTML IG export so I can have the imagessss.
-				
+			
 				const the_images = the_post.carousel_media;
 				let the_images_urls = [];
 				the_images.forEach(function(img) {
 					the_images_urls.push(img.image_versions2.candidates[0].url);
 				});
 
-				//console.table("Image URLS: ", the_images_urls);
+				console.table("Image URLS: ", the_images_urls);
 
-				*/
 
 				// Start the gallery block
 				let post_content = `
@@ -128,9 +127,10 @@ function igti_register_options_page_markup() {
 					content: post_content,
 					date: the_date
 				});
-				post.save().done(function(post) {
+				/*post.save().done(function(post) {
 					console.log('🟢 Post Created: "' + post.title.raw + '"');
 				});
+				*/
 
 				// Limit to ONE post for testing purposes, adjust others.
 				// }); // the_json.forEach
