@@ -8,7 +8,7 @@ Author:       SteveRudolfi
 Author URI:   https://github.com/sr4136/
 License:      NA
 License URI:  NA
-Text Domain:  igti
+Text Domain:  igi
 */
 
 /*
@@ -46,7 +46,7 @@ function igi_permalink_block_render( $attributes, $innerBlocks ) {
  * Register options page.
  */
 function igi_register_options_page() {
-	add_options_page('Insta Import', 'Insta Import', 'manage_options', 'igti', 'igi_register_options_page_markup');
+	add_options_page('Insta Import', 'Insta Import', 'manage_options', 'igi', 'igi_register_options_page_markup');
 }
 add_action('admin_menu', 'igi_register_options_page');
 
@@ -57,12 +57,12 @@ add_action('admin_menu', 'igi_register_options_page');
 function igi_register_options_page_markup() {
 	global $_SERVER;
 	// URI to this options page.
-	$igti_uri = $_SERVER['REQUEST_URI'];
+	$igi_uri = $_SERVER['REQUEST_URI'];
 ?>
 	<section class="igi-header">
 		<h2>IG Import:</h2>
 
-		<form action="<?php echo $igti_uri ?>" method="post">
+		<form action="<?php echo $igi_uri ?>" method="post">
 			<input type="submit" value="Test Data" name="submit_data" class="igsubmit test">
 			<input type="submit" value="Run Import" name="submit_data" class="igsubmit import">
 		</form>
@@ -80,8 +80,16 @@ function igi_register_options_page_markup() {
  * Enqueue CSS just for the options page.
  */
 function igi_admin_enqueue($hook) {
-	if ('settings_page_igti' != $hook)
+	if ('settings_page_igi' != $hook)
 		return;
-	wp_enqueue_style('igti-style', plugins_url('/style.css', __FILE__));
+	wp_enqueue_style('igi-admin-style', plugins_url('/admin.css', __FILE__));
 }
 add_action('admin_enqueue_scripts', 'igi_admin_enqueue');
+
+/*
+ * Enqueue CSS for frontend.
+ */
+function igi_style() {
+	wp_enqueue_style('igi-style', plugins_url('/style.css', __FILE__));
+}
+add_action('wp_enqueue_scripts', 'igi_style');
