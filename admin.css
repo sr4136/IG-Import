@@ -4,12 +4,15 @@
 	padding: 3px 8px;
 	cursor: pointer;
 }
+
 .igi-header .igsubmit.test {
 	background-color: #97ffb6;
 }
+
 .igi-header .igsubmit.import {
 	background-color: #f9f782;
 }
+
 .igi-header .igsubmit:hover {
 	background-color: #fff;
 }
@@ -17,15 +20,15 @@
 .igi-status-note {
 	padding-left: 0.5em;
 }
+
 .igi-status-note.error {
-	border-left: 2px solid red;
-}
-.igi-status-note.success {
-	border-left: 2px solid green;
+	border-left: 2px solid #e60000;
 }
 
-.igi-import-data {
+.igi-status-note.success {
+	border-left: 2px solid #00be00;
 }
+
 .igi-import-data pre {
 	background: #fff;
 	border: 1px solid #000;
@@ -33,10 +36,12 @@
 	overflow: auto scroll;
 	resize: vertical;
 }
+
 .igi-import-data ul {
 	list-style: disc;
 	margin-left: 1em;
 }
+
 .igi-import-data .posts-list {
 	height: 500px;
 	overflow: auto scroll;
@@ -45,14 +50,17 @@
 	padding: 0.5em;
 	margin-left: 0;
 }
+
 .igi-import-data .posts-list .post {
 	background: #fff;
 	margin: 0 0 1em 0;
 	padding: 0.5em;
 }
+
 .igi-import-data .posts-list .post li {
 	margin-left: 1.25em;
 }
+
 .igi-import-data .posts-list .post .media-urls ul {
 	list-style: circle;
 }
@@ -62,6 +70,7 @@
 	margin: 1em 1em 0 0;
 	padding: 0;
 }
+
 .igi-import-data .posts-list .post .media-list img,
 .igi-import-data .posts-list .post .media-list video {
 	width: 200px;
