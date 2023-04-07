@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "igi-permalink/igi-permalink",
+	"version": "0.1.0",
+	"title": "Permalink",
+	"category": "design",
+	"icon": "admin-links",
+	"description": "Permalink (from IGI).",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "igi-permalink",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

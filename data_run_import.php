@@ -26,7 +26,7 @@ function igi_run_import() {
 						<figure class="wp-block-image"><img src="<?php echo $m; ?>" alt="" /></figure>
 						<!-- /wp:image -->
 					<?php
-					} // images
+					} // images 
 
 					if (igi_get_file_extension($m) == 'mp4') {
 					?>

@@ -19,6 +19,29 @@ require(plugin_dir_path(__FILE__) . 'data_process.php');
 require(plugin_dir_path(__FILE__) . 'data_output_test.php');
 require(plugin_dir_path(__FILE__) . 'data_run_import.php');
 
+
+/**
+ * Registers the block using the metadata loaded from the `block.json` file.
+ * Behind the scenes, it registers also all assets so they can be enqueued
+ * through the block editor in the corresponding context.
+ *
+ * @see https://developer.wordpress.org/reference/functions/register_block_type/
+ */
+function igi_permalink_igi_permalink_block_init() {
+	register_block_type( __DIR__ . '/build', array(
+		'render_callback' => 'igi_permalink_block_render'
+	) );
+}
+add_action('init', 'igi_permalink_igi_permalink_block_init');
+
+function igi_permalink_block_render( $attributes, $innerBlocks ) {
+	$permalink = get_the_permalink();
+	$markup = '<a href="' . $permalink . '">' . $innerBlocks . '</a>';
+
+	return $markup;
+}
+
+
 /*
  * Register options page.
  */
@@ -32,6 +55,7 @@ add_action('admin_menu', 'igi_register_options_page');
  * Options page markup.
  */
 function igi_register_options_page_markup() {
+	global $_SERVER;
 	// URI to this options page.
 	$igti_uri = $_SERVER['REQUEST_URI'];
 ?>
