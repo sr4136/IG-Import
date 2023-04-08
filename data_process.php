@@ -111,7 +111,10 @@ function igi_get_data() {
 
 						// Title & Caption.
 						$post_structure['title'] = 'IG Import - ' . $post_structure['date_display'];
-						$post_structure['caption'] = nl2br(html_entity_decode($post_structure['caption'], ENT_QUOTES, "UTF-8"));
+						$post_structure['caption'] = cleanString( $post_structure['caption'] );
+						if( empty( $post_structure['caption'] ) ){
+							$post_structure['caption'] = "(untitled)";
+						}
 
 						// Media Difference.
 						if ($post_structure['media_count_initial'] !== $post_structure['media_count_valid']) {

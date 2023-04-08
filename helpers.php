@@ -8,6 +8,10 @@ function igi_get_local_file_contents($file_path) {
 }
 
 
+function cleanString($string) {
+	return preg_replace('/[^(\x20-\x7F)]*/', '', $string);    
+}
+
 function igi_get_file_extension($name) {
 	$n = strrpos($name, '.');
 	return ($n === false) ? '' : substr($name, $n + 1);
