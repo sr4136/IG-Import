@@ -1,12 +1,175 @@
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
+@import url(https://fonts.bunny.net/css?family=abeezee:400);
 
-.wp-block-igi-permalink-igi-permalink {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+/* Header. */
+.wp-block-cover {
+	/* Header: cover text wrapper. */
+	.wp-block-cover__inner-container {
+		width: auto;
+
+		/* Site title. */
+		.wp-block-site-title {
+			font-family: ABeeZee, sans-serif;
+		}
+	}
+}
+
+/* Post listing template. */
+.wp-block-post-template {
+	max-width: 90vw !important;
+
+	/* Individual posts within the listing. */
+	.wp-block-post {
+		border: 1px solid #ccc;
+		padding: 0 1em 1em 1em;
+		box-shadow: 5px 5px 5px #999;
+		border-radius: 3px;
+		transition: all 0.5s ease-out;
+		box-sizing: border-box;
+		display: grid;
+		grid-template-rows: min-content;
+
+		&:hover {
+			border: 1px solid #007575;
+			box-shadow: 5px 5px 5px #000;
+		}
+
+		& > .wp-block-group:last-of-type {
+			align-content: end;
+		}
+
+		a {
+			text-decoration: none;
+			color: #000;
+		}
+
+		[class*="has-"] {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			column-gap: 1em;
+			row-gap: 1em;
+		}
+
+		.has-1-items {
+			grid-template-columns: 1fr;
+			.wp-block-video::after {
+				font-size: 3em;
+				top: 3px;
+				left: 14px;
+			}
+		}
+		.has-2-items,
+		.has-3-items,
+		.has-4-items {
+			grid-template-columns: 1fr 1fr;
+
+			.wp-block-video::after {
+				font-size: 1.25em;
+				top: 3px;
+				left: 8px;
+			}
+		}
+
+		figure {
+			margin-block-start: 0 !important;
+			display: flex;
+		}
+		.wp-block-video {
+			position: relative;
+
+			&:before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 1;
+				background-image: linear-gradient(
+					-45deg,
+					rgba(0, 0, 0, 0) 0%,
+					rgba(5, 5, 5, 0) 49%,
+					rgb(0, 0, 0, 0.75) 50%
+				);
+				width: 50%;
+				height: 50%;
+			}
+			&:after {
+				content: "📺";
+				position: absolute;
+				top: -2px;
+				left: 2px;
+				z-index: 1;
+			}
+		}
+
+		.wp-block-quote {
+			padding: 0.5em 0 0.5em 0;
+			margin: 0.5em 0 0 0;
+			border-bottom: 1px solid #ccc;
+			font-family: ABeeZee, sans-serif;
+			font-size: 1.25em;
+			line-height: 1.5em;
+
+			p {
+				padding: 0;
+				margin: 0;
+			}
+		}
+	}
+}
+
+.wp-block-post-date {
+	text-align: right;
+	font-size: 1em;
+	padding: 1em 0 0 0;
+	color: #666;
+}
+
+.wp-block-group .wp-block-post-terms {
+	margin-top: 1em;
+	display: flex;
+	flex-wrap: wrap-reverse;
+	flex-direction: row-reverse;
+
+	a {
+		background: #007575;
+		border-radius: 3px;
+		padding: 0.25em 0.5em;
+		color: #fff;
+		font-size: 1.25em;
+		margin: 0 0 0.25em 0.25em;
+		text-transform: lowercase;
+	}
+
+	.wp-block-post-terms__separator {
+		display: none;
+		opacity: 0;
+	}
+}
+
+figure {
+	outline: 1px solid #ccc;
+}
+
+.single {
+	.wp-block-post-template {
+		width: 100%;
+		max-width: 1200px !important;
+		margin: 0 auto;
+	}
+
+	figure img {
+		width: 100%;
+	}
+
+	.wp-block-quote {
+		padding: 0.5em 0 0.5em 0.75em;
+		border-left: 3px solid #007575;
+		margin: 0;
+		font-size: 1.5em;
+		line-height: 1.75em;
+
+		p {
+			margin: 0;
+			padding: 0;
+		}
+	}
 }

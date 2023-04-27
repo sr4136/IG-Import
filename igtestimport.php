@@ -28,15 +28,19 @@ require(plugin_dir_path(__FILE__) . 'data_run_import.php');
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
 function igi_permalink_igi_permalink_block_init() {
-	register_block_type( __DIR__ . '/build', array(
+	register_block_type( __DIR__ . '/build/igi-permalink', array(
 		'render_callback' => 'igi_permalink_block_render'
 	) );
 }
 add_action('init', 'igi_permalink_igi_permalink_block_init');
 
+/*
+ * Dynamic block render.
+ */
 function igi_permalink_block_render( $attributes, $innerBlocks ) {
+	$blockAtts = get_block_wrapper_attributes();
 	$permalink = get_the_permalink();
-	$markup = '<a href="' . $permalink . '">' . $innerBlocks . '</a>';
+	$markup = "<a {$blockAtts} href='{$permalink}'> {$innerBlocks} </a>";
 
 	return $markup;
 }
@@ -82,7 +86,7 @@ function igi_register_options_page_markup() {
 function igi_admin_enqueue($hook) {
 	if ('settings_page_igi' != $hook)
 		return;
-	wp_enqueue_style('igi-admin-style', plugins_url('/admin.css', __FILE__));
+	wp_enqueue_style( 'igi-options-page-style', plugins_url('/options-page.css', __FILE__));
 }
 add_action('admin_enqueue_scripts', 'igi_admin_enqueue');
 
@@ -90,6 +94,6 @@ add_action('admin_enqueue_scripts', 'igi_admin_enqueue');
  * Enqueue CSS for frontend.
  */
 function igi_style() {
-	wp_enqueue_style('igi-style', plugins_url('/style.css', __FILE__));
+	//wp_enqueue_style('igi-style', plugins_url('/style.css', __FILE__));
 }
 add_action('wp_enqueue_scripts', 'igi_style');
