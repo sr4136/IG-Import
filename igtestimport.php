@@ -28,7 +28,7 @@ require(plugin_dir_path(__FILE__) . 'data_run_import.php');
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
 function igi_permalink_igi_permalink_block_init() {
-	register_block_type(__DIR__ . '/build/igi-permalink', array(
+	register_block_type(__DIR__ . '/build', array(
 		'render_callback' => 'igi_permalink_block_render'
 	));
 }
@@ -99,3 +99,16 @@ function igi_style() {
 	wp_enqueue_style('igi-style', plugins_url('/build/style-index.css', __FILE__));
 }
 add_action('wp_enqueue_scripts', 'igi_style');
+
+
+
+/*
+ * Modify query posts per page for archive/year listings.
+ */
+function modify_terms_query($wp_query) {
+  if( is_category() || is_tax() || is_date()){
+    $wp_query->query_vars['posts_per_page'] = 20;
+  }
+  return $wp_query;
+}
+add_filter('pre_get_posts', 'modify_terms_query');
