@@ -13,7 +13,7 @@
 	- You'll see "initial media" vs "valid media" mentioned several times. This is due to the export archive containing posts that point to media that doesn't exist for some reason or another. Because my IG account was long since deleted, I cannot confirm exactly why these are missing from the export archive.
 
 ## Permalink Block
-- This was created as a wrapper to hold the post-content block within the query block in block templates (index & archive). With each post styled as a "card" or "polaroid," the post content (blockquote, image(s), video(s)) would be wrapped in the permalink. The post-date block is also linked to the individual post with its settings. The categories/tags that output within the card are links to each term's archive page. 
+- This was created as a wrapper to hold the post-content block within the query block in block templates ([index](https://github.com/sr4136/stever-photography/blob/8bcd7ee087b1a44f717fe56cc79104a6babc84c6/templates/index.html#L16-L19C1) & [archive](https://github.com/sr4136/stever-photography/blob/8bcd7ee087b1a44f717fe56cc79104a6babc84c6/templates/archive.html#L11-L15)). With each post styled as a "card" or "polaroid," the post content (blockquote, image(s), video(s)) would be wrapped in the permalink. The post-date block is also linked to the individual post with its settings. The categories/tags that output within the card are links to each term's archive page. 
 	- Improvements:
 		- There are accessibility considerations that I'd like to circle back to including but not limited to the title attribute for the permalink block.
 		- The video blocks have controls enabled. I'd like to disable those controls when viewing the index/archive templates.
