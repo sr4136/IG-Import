@@ -9,7 +9,7 @@
 - Data location related to each post:
 	- Instagram "used to" only support one image per post and then enabled multiple images per post. Because of this, the data processing/validation/transformation checks both at the *root of the post* and then if not found, *each media item per post* for things like the post's title and timestamp.
 - Media validation:
-	- You'll see "initial media" vs "valid media" mentioned several times. This is due to the export containing posts that point to media that doesn't exist for some reason or another. Because my IG account was deleted, I cannot confirm exactly why these are missing from the export.
+	- You'll see "initial media" vs "valid media" mentioned several times. This is due to the export containing posts that point to media that doesn't exist for some reason or another. Because my IG account was long since deleted, I cannot confirm exactly why these are missing from the export.
 
 ---
 
