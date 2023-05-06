@@ -1,6 +1,10 @@
 # IG Import & Functionality
 
 ## Considerations & Caveats:
+- This was created for my personal opinionated use case.
+	- My preferences for date formats, default user, post content/block structure, etc are hard-coded.
+	- If I were to build this for an audience, I would absolutely include options for customizing those.
+	- I created a block theme, [SteveR Photography](https://github.com/sr4136/stever-photography), to work in tandem with this plugin. It relies on the "permalink" block that this plugin provides (at the page template level).
 - This was developed using [Local](https://localwp.com/). 
 - Data location related to each post:
 	- Instagram "used to" only support one image per post and then enabled multiple images per post. Because of this, the data processing/validation/transformation checks both at the *root of the post* and then if not found, *each media item per post* for things like the post's title and timestamp.
@@ -50,4 +54,11 @@
 		4. The "Posts" processed visual data in an expandable area. This includes more readable/scannable data plus thumbnails of the valid media.
 			- ![Screenshot: Visual Data](https://user-images.githubusercontent.com/4681620/236633963-b0aa6d21-1ff7-476b-9067-e67e97acdd60.png)
 
-
+## Howto - Import Data to Posts:
+1. Click the yellow "Run Import" button.
+	- This will run the import using the same processed data. 
+	- One WP post will be created per IG post.
+		- As above, the WP post's title, date, and content (blockquote, image block(s), and video block(s), as well as some wrapper group blocks) will be inserted as well as some classes based on the media counts.
+		- The post author will default to the site's default author.
+		- The posts will not contain any categories/tags other than "uncategorized."
+2. Once complete, head over to your "All Posts" page of your site's wp-admin to find all of your imported posts.
