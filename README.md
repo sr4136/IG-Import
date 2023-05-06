@@ -1,6 +1,7 @@
 # IG Import & Functionality
 
 ## Considerations & Caveats:
+- Could & should this be broken into multiple plugins-- one for the import functionality and one for the block & styles? Probably. Definitely.
 - This was created for my personal opinionated use case.
 	- My preferences for date formats, default user, post content/block structure, etc are hard-coded.
 	- If I were to build this for an audience, I would absolutely include options for customizing those.
@@ -11,9 +12,15 @@
 - Media validation:
 	- You'll see "initial media" vs "valid media" mentioned several times. This is due to the export archive containing posts that point to media that doesn't exist for some reason or another. Because my IG account was long since deleted, I cannot confirm exactly why these are missing from the export archive.
 
+## Permalink Block
+- This was created as a wrapper to hold the post-content block within the query block in block templates (index & archive). With each post styled as a "card" or "polaroid," the post content (blockquote, image(s), video(s)) would be wrapped in the permalink. The post-date block is also linked to the individual post with its settings. The categories/tags that output within the card are links to each term's archive page. 
+	- Improvements:
+		- There are accessibility considerations that I'd like to circle back to including but not limited to the title attribute for the permalink block.
+		- The video blocks have controls enabled. I'd like to disable those controls when viewing the index/archive templates.
+
 ---
 
-## Howto - Setup:
+## Howto - Setup for Import:
 1. Download JSON archive via IG: [https://www.instagram.com/download/request/](https://www.instagram.com/download/request/).
 2. Install this plugin.
 3. Create a directory within the root of this plugin called `ig_data`.
@@ -42,7 +49,8 @@
 					- unformatted - UNIX timestamp provided by the export.
 					- display - my preferred display format, for things like the title above.
 					- for WP - this is the format passed to WP for the post's creation date.
-				- Caption - the "title" from the export, if provided. Else, defaults to `(untitled)`. This is passed to WP post content as a quote block.
+				- Caption - the "title" from the export, if provided. Else, defaults to `(untitled)`. This is passed to WP post content as a 
+				block.
 				- Media counts:
 					- Initial/valid media count - How many media items the export had for each post vs how many were found existing.
 					- Valid images/video count - individually, how many valid images/videos per post were found.
