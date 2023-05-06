@@ -56,6 +56,7 @@
 
 ## Howto - Import Data to Posts:
 1. Click the yellow "Run Import" button.
+	- ⚠️ ***This will take some time.***
 	- This will run the import using the same processed data. 
 	- One WP post will be created per IG post.
 		- As above, the WP post's title, date, and content (blockquote, image block(s), and video block(s), as well as some wrapper group blocks) will be inserted as well as some classes based on the media counts.
