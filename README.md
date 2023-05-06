@@ -62,3 +62,4 @@
 		- The post author will default to the site's default author.
 		- The posts will not contain any categories/tags other than "uncategorized."
 2. Once complete, head over to your "All Posts" page of your site's wp-admin to find all of your imported posts.
+	- Depending on the theme you've got activated, your experience (viewing the posts on the frontend of your site) may vary. 
