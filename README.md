@@ -1,4 +1,4 @@
-# IG-Test-Import
+# IG Import & Functionality
 
 ### Dev Bookmarks:
 - https://developer.wordpress.org/rest-api/using-the-rest-api/backbone-javascript-client/
