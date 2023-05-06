@@ -116,11 +116,19 @@
 	}
 }
 
+.wp-block-archives-dropdown select,
+.wp-block-categories-dropdown select {
+	padding: 0.5em 1em;
+}
+
 .wp-block-post-date {
 	text-align: right;
 	font-size: 1em;
 	padding: 1em 0 0 0;
 	color: #666;
+	a {
+		color: #666;
+	}
 }
 
 .wp-block-group .wp-block-post-terms {
@@ -154,6 +162,10 @@ figure {
 		width: 100%;
 		max-width: 1200px !important;
 		margin: 0 auto;
+
+		.wp-block-group {
+			width: 100%;
+		}
 	}
 
 	figure img {

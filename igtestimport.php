@@ -96,6 +96,6 @@ add_action('admin_enqueue_scripts', 'igi_admin_enqueue');
  * Enqueue CSS for frontend.
  */
 function igi_style() {
-	//wp_enqueue_style('igi-style', plugins_url('/style.css', __FILE__));
+	wp_enqueue_style('igi-style', plugins_url('/build/style-index.css', __FILE__));
 }
 add_action('wp_enqueue_scripts', 'igi_style');
