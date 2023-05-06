@@ -5,8 +5,6 @@ function igi_get_data() {
 	$json_filename = 'posts_1.json';
 	$full_path_to_JSON = $dir_path . $json_filename;
 
-	echo ('<p><strong>Note</strong>: this expects a folder (`ig_data`) at this plugin root, with the data files from the IG export nested directly inside: `posts_1.json` and `media/*`.</p>');
-
 	if (!file_exists($full_path_to_JSON)) {
 		echo ('<p class="igi-status-note error"><strong>Error</strong>: JSON file not found at "' . $full_path_to_JSON . '"</p>');
 	} else {

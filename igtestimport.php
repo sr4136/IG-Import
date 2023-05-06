@@ -28,16 +28,16 @@ require(plugin_dir_path(__FILE__) . 'data_run_import.php');
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
 function igi_permalink_igi_permalink_block_init() {
-	register_block_type( __DIR__ . '/build/igi-permalink', array(
+	register_block_type(__DIR__ . '/build/igi-permalink', array(
 		'render_callback' => 'igi_permalink_block_render'
-	) );
+	));
 }
 add_action('init', 'igi_permalink_igi_permalink_block_init');
 
 /*
  * Dynamic block render.
  */
-function igi_permalink_block_render( $attributes, $innerBlocks ) {
+function igi_permalink_block_render($attributes, $innerBlocks) {
 	$blockAtts = get_block_wrapper_attributes();
 	$permalink = get_the_permalink();
 	$markup = "<a {$blockAtts} href='{$permalink}'> {$innerBlocks} </a>";
@@ -66,7 +66,9 @@ function igi_register_options_page_markup() {
 	<section class="igi-header">
 		<h2>IG Import:</h2>
 
-		<form action="<?php echo $igi_uri ?>" method="post">
+		<p><strong>Note</strong>: this expects a folder (`ig_data`) at this plugin root, with the data files from the IG export nested directly inside: `posts_1.json` and `media/*`. See full documentation at <a href="https://github.com/sr4136/IG-Import">https://github.com/sr4136/IG-Import</a>.</p>
+
+		<form action=" <?php echo $igi_uri ?>" method="post">
 			<input type="submit" value="Test Data" name="submit_data" class="igsubmit test">
 			<input type="submit" value="Run Import" name="submit_data" class="igsubmit import">
 		</form>
@@ -86,7 +88,7 @@ function igi_register_options_page_markup() {
 function igi_admin_enqueue($hook) {
 	if ('settings_page_igi' != $hook)
 		return;
-	wp_enqueue_style( 'igi-options-page-style', plugins_url('/options-page.css', __FILE__));
+	wp_enqueue_style('igi-options-page-style', plugins_url('/options-page.css', __FILE__));
 }
 add_action('admin_enqueue_scripts', 'igi_admin_enqueue');
 

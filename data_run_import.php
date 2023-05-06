@@ -54,5 +54,11 @@ function igi_run_import() {
 
 			wp_insert_post($post_atts);
 		endforeach; // each $data['posts']
+
+		echo ('<p class="igi-status-note status success"><strong>Success</strong>: Import comepleted successfully.</p>');
+
+	else: // if $data
+		echo ('<p class="igi-status-note error"><strong>Error</strong>: Import unable to run.</p>');
 	endif; // if $data
+
 } // igi_run_import()
