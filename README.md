@@ -17,6 +17,11 @@
 	- Improvements:
 		- There are accessibility considerations that I'd like to circle back to including but not limited to the title attribute for the permalink block.
 		- The video blocks have controls enabled. I'd like to disable those controls when viewing the index/archive templates.
+- Architecture notes:
+	- block.json
+		- the `editorStyle` property is set to `index.css`, compiled from `editor.scss`.
+		- the `style` property is omitted here, as I am also using it for some theme styles and enqueueing it via the [plugin's entry point file](https://github.com/sr4136/IG-Import/blob/main/igtestimport.php#L95-L101).
+	- A [dynamic block renderer](https://github.com/sr4136/IG-Import/blob/main/igtestimport.php#L37-L46), but [save.js](https://github.com/sr4136/IG-Import/blob/main/src/save.js) was still required to store the innerblocks.
 
 ---
 
