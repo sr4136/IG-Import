@@ -1,7 +1,10 @@
 # IG Import & Functionality
 
 ## Considerations & Caveats:
-- Could & should this be broken into multiple plugins-- one for the import functionality and one for the block & styles? Probably. Definitely.
+- Improvements:
+	- Could & should this be broken into multiple plugins-- one for the import functionality and one for the block & styles? Probably. Definitely.
+	- It'd be a better idea to use JavaScript or AJAX to execute the import request considering server timeouts vs size of import.
+	- Along with the above, it'd be nice to implement per-post import status messages, ex "post xyz created successfully."
 - This was created for my personal opinionated use case.
 	- My preferences for date formats, default user, post content/block structure, etc are hard-coded.
 	- If I were to build this for an audience, I would absolutely include options for customizing those.
