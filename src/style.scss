@@ -185,3 +185,22 @@ figure {
 		}
 	}
 }
+
+@media only screen and (max-width: 1200px) {
+	.wp-block-post-template .wp-block-post {
+		width: calc(33.33% - 0.9375em) !important;
+	}
+}
+@media only screen and (max-width: 800px) {
+	.wp-block-post-template .wp-block-post {
+		width: calc(50% - 0.9375em) !important;
+		.wp-block-quote p {
+			font-size: 1em;
+		}
+	}
+}
+@media only screen and (max-width: 480px) {
+	.wp-block-post-template .wp-block-post {
+		width: 100% !important;
+	}
+}
