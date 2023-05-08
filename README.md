@@ -4,6 +4,7 @@ The result of this work can be seen on my [photo blog](https://steverudolfi.com/
 
 ## Considerations & Caveats:
 - Improvements:
+	- I'd like to use the [ActivityPub](https://wordpress.org/plugins/activitypub/) plugin to connect this to the fediverse.
 	- Could & should this be broken into multiple plugins-- one for the import functionality and one for the block & styles? Probably. Definitely.
 	- It'd be a better idea to use JavaScript or AJAX to execute the import request considering server timeouts vs size of import.
 	- Along with the above, it'd be nice to implement per-post import status messages, ex "post xyz created successfully."
