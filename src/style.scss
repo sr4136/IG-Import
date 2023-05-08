@@ -210,10 +210,12 @@ figure {
 		}
 	}
 
-	.wp-block-post-content,
-	.wp-block-post-terms,
-	.wp-block-post-date {
-		padding: 0 1.5em;
+	.single {
+		.wp-block-post-content,
+		.wp-block-post-terms,
+		.wp-block-post-date {
+			padding: 0 1.5em;
+		}
 	}
 }
 @media only screen and (max-width: 480px) {

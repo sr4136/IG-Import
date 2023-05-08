@@ -194,9 +194,9 @@ figure {
   .wp-block-post-template .wp-block-post .wp-block-quote p {
     font-size: 1em;
   }
-  .wp-block-post-content,
-  .wp-block-post-terms,
-  .wp-block-post-date {
+  .single .wp-block-post-content,
+  .single .wp-block-post-terms,
+  .single .wp-block-post-date {
     padding: 0 1.5em;
   }
 }
