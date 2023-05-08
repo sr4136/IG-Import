@@ -21,6 +21,7 @@
 /* Post listing template. */
 .wp-block-post-template {
   max-width: 90vw !important;
+  justify-content: center;
   /* Individual posts within the listing. */
 }
 .wp-block-post-template .wp-block-post {
