@@ -171,6 +171,16 @@ figure {
   padding: 0;
 }
 
+.wp-block-post-content {
+  width: 100%;
+  max-width: 100%;
+}
+
+.is-layout-constrained figure {
+  width: 100%;
+  max-width: 100%;
+}
+
 @media only screen and (max-width: 1200px) {
   .wp-block-post-template .wp-block-post {
     width: calc(33.33% - 0.9375em) !important;
@@ -183,10 +193,18 @@ figure {
   .wp-block-post-template .wp-block-post .wp-block-quote p {
     font-size: 1em;
   }
+  .wp-block-post-content,
+  .wp-block-post-terms,
+  .wp-block-post-date {
+    padding: 0 1.5em;
+  }
 }
 @media only screen and (max-width: 480px) {
   .wp-block-post-template .wp-block-post {
     width: 100% !important;
+  }
+  .wp-block-site-title {
+    font-size: 1.5em;
   }
 }
 
