@@ -1,5 +1,7 @@
 # IG Import & Functionality
 
+The result of this work can be seen on my [photo blog](https://steverudolfi.com/photography/).
+
 ## Considerations & Caveats:
 - Improvements:
 	- Could & should this be broken into multiple plugins-- one for the import functionality and one for the block & styles? Probably. Definitely.
