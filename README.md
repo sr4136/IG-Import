@@ -31,6 +31,18 @@ The result of this work can be seen on my [photo blog](https://steverudolfi.com/
 
 ---
 
+## Data Parsing & Import Process:
+1. Get the JSON file provided by the Instagram export and parse it into a data structure.
+	- https://github.com/sr4136/IG-Import/blob/main/data_process.php
+2. Output the data structure and a visual representation of that data-- for verification.
+ 	- https://github.com/sr4136/IG-Import/blob/main/data_output_test.php
+3. Run the import:
+	- Loop through the data structure and [prepare the new post's content](https://github.com/sr4136/IG-Import/blob/main/data_run_import.php#L42-L75) with the desired block markup.
+	- [Sideload the media](https://github.com/sr4136/IG-Import/blob/main/data_run_import.php#L2-L30) into the library.
+	- [Publish the post](https://github.com/sr4136/IG-Import/blob/main/data_run_import.php#L78-L88).
+
+---
+
 ## Howto - Setup for Import:
 1. Download JSON archive via IG: [https://www.instagram.com/download/request/](https://www.instagram.com/download/request/).
 2. Install this plugin.
