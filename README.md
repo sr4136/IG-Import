@@ -8,6 +8,7 @@ The result of this work can be seen on my [photo blog](https://steverudolfi.com/
 	- Could & should this be broken into multiple plugins-- one for the import functionality and one for the block & styles? Probably. Definitely.
 	- It'd be a better idea to use JavaScript or AJAX to execute the import request considering server timeouts vs size of import.
 	- Along with the above, it'd be nice to implement per-post import status messages, ex "post xyz created successfully."
+	- This was written to run once and completely. I would write some checks for existing media & posts-- in order to prevent duplication in the event of partial imports or accidental re-runs.
 - This was created for my personal opinionated use case.
 	- My preferences for date formats, default user, post content/block structure, etc are hard-coded.
 	- If I were to build this for an audience, I would absolutely include options for customizing those.
@@ -28,6 +29,18 @@ The result of this work can be seen on my [photo blog](https://steverudolfi.com/
 		- the `editorStyle` property is set to `index.css`, compiled from `editor.scss`.
 		- the `style` property is omitted here, as I am also using it for some theme styles and enqueueing it via the [plugin's entry point file](https://github.com/sr4136/IG-Import/blob/main/igtestimport.php#L95-L101).
 	- A [dynamic block renderer](https://github.com/sr4136/IG-Import/blob/main/igtestimport.php#L37-L46), but [save.js](https://github.com/sr4136/IG-Import/blob/main/src/save.js) was still required to store the innerblocks.
+
+---
+
+## Data Parsing & Import Process:
+1. Get the JSON file provided by the Instagram export and parse it into a data structure.
+	- https://github.com/sr4136/IG-Import/blob/main/data_process.php
+2. Output the data structure and a visual representation of that data-- for verification.
+ 	- https://github.com/sr4136/IG-Import/blob/main/data_output_test.php
+3. Run the import:
+	- Loop through the data structure and [prepare the new post's content](https://github.com/sr4136/IG-Import/blob/main/data_run_import.php#L42-L75) with the desired block markup.
+	- [Sideload the media](https://github.com/sr4136/IG-Import/blob/main/data_run_import.php#L2-L30) into the library.
+	- [Publish the post](https://github.com/sr4136/IG-Import/blob/main/data_run_import.php#L78-L88).
 
 ---
 
