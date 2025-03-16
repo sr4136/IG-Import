@@ -13,6 +13,11 @@
 	}
 }
 
+.is-layout-constrained figure {
+	width: 100%;
+	max-width: 100%;
+}
+
 /* Post listing template. */
 .wp-block-post-template {
 	max-width: 90vw !important;
@@ -34,51 +39,42 @@
 			box-shadow: 5px 5px 5px #000;
 		}
 
-		& > .wp-block-group:last-of-type {
-			align-content: end;
-		}
-
 		a {
 			text-decoration: none;
 			color: #000;
 		}
 
-		[class*="has-"] {
-			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
-			column-gap: 1em;
-			row-gap: 1em;
-		}
-
-		.has-1-items {
-			grid-template-columns: 1fr;
-			.wp-block-video::after {
-				font-size: 3em;
-				top: 3px;
-				left: 14px;
-			}
-		}
-		.has-2-items,
-		.has-3-items,
-		.has-4-items {
-			grid-template-columns: 1fr 1fr;
-
-			.wp-block-video::after {
-				font-size: 1.25em;
-				top: 3px;
-				left: 8px;
-			}
-		}
-
-		figure {
-			margin-block-start: 0 !important;
+		.wp-block-group {
 			display: flex;
-		}
-		.wp-block-video {
-			position: relative;
+			flex-wrap: wrap;
+			gap: 0.5em; // Gap between items
 
-			&:before {
-				content: "";
+			figure {
+				margin: 0; // Remove default margin from figure
+
+				// First item is full width
+				&:first-child {
+					flex: 100%; // Full width
+				}
+
+				// If there are more than 1 items
+				&:nth-child(n + 2) {
+					flex: 0 0 calc(33.33% - 0.333em); // One-third width minus a third of the gap
+				}
+			}
+		}
+
+		& > .wp-block-group:last-of-type {
+			align-content: end;
+		}
+
+		/* Optional: To ensure no straggler items at the bottom */
+		.wp-block-group .wp-block-video {
+			position: relative;
+			container-type: inline-size;
+
+			&::before {
+				content: "📺";
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -91,13 +87,34 @@
 				);
 				width: 50%;
 				height: 50%;
+				font-size: 0.85em;
+				text-indent: 0.35em;
 			}
-			&:after {
-				content: "📺";
+
+			&::after {
+				content: "";
 				position: absolute;
-				top: -2px;
-				left: 2px;
-				z-index: 1;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+			}
+		}
+
+		@container (max-width: 145px) {
+			.wp-block-video::before {
+				width: 70%;
+				height: 70%;
+				font-size: 0.6em;
+			}
+		}
+
+		@container (max-width: 95px) {
+			.wp-block-video::before {
+				width: 100%;
+				height: 100%;
+				font-size: 0.55em;
 			}
 		}
 
@@ -117,9 +134,21 @@
 	}
 }
 
-.wp-block-archives-dropdown select,
-.wp-block-categories-dropdown select {
-	padding: 0.5em 1em;
+.sr-filters-search {
+	align-items: stretch;
+	margin-bottom: 3em;
+
+	.wp-block-archives-dropdown select,
+	.wp-block-categories-dropdown select {
+		padding: 0.5em 1em;
+		height: 100%;
+		min-width: 200px;
+	}
+
+	.wp-block-search input {
+		min-width: 250px;
+		max-width: 75%;
+	}
 }
 
 .wp-block-post-date {
@@ -127,6 +156,7 @@
 	font-size: 1em;
 	padding: 1em 0 0 0;
 	color: #666;
+
 	a {
 		color: #666;
 	}
@@ -192,26 +222,30 @@ figure {
 	max-width: 100%;
 }
 
+@media only screen and (max-width: 1200px) {
+	.wp-site-blocks .wp-block-post-template {
+		padding: 0 1em;
+	}
+}
+
 .wp-site-blocks .wp-block-query-title {
 	text-align: center;
 	margin: 2em auto 0 auto;
 }
 
-.is-layout-constrained figure {
-	width: 100%;
-	max-width: 100%;
-}
-
 @media only screen and (max-width: 1200px) {
-	.wp-block-post-template .wp-block-post {
-		width: calc(33.33% - 0.9375em) !important;
+	.wp-block-post-template {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 }
+
 @media only screen and (max-width: 800px) {
-	.wp-block-post-template .wp-block-post {
-		width: calc(50% - 0.9375em) !important;
-		.wp-block-quote p {
-			font-size: 1em;
+	.wp-block-post-template {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		.wp-block-post {
+			.wp-block-quote p {
+				font-size: 1em;
+			}
 		}
 	}
 
@@ -223,11 +257,13 @@ figure {
 		}
 	}
 }
+
 @media only screen and (max-width: 480px) {
-	.wp-block-post-template .wp-block-post {
-		width: 100% !important;
-	}
 	.wp-block-site-title {
 		font-size: 1.5em;
 	}
+}
+
+.wp-block-igi-permalink-igi-permalink {
+	width: 100%;
 }
