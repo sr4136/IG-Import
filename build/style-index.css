@@ -11,8 +11,17 @@
   /* Header: cover text wrapper. */
 }
 .wp-block-cover .wp-block-cover__inner-container {
-  width: auto;
+  max-width: 1020px;
   /* Site title. */
+}
+.wp-block-cover .wp-block-cover__inner-container .wp-block-group {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+@media only screen and (max-width: 1020px) {
+  .wp-block-cover .wp-block-cover__inner-container .wp-block-group {
+    width: 100%;
+  }
 }
 .wp-block-cover .wp-block-cover__inner-container .wp-block-site-title {
   font-family: ABeeZee, sans-serif;

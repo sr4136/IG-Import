@@ -4,8 +4,16 @@
 .wp-block-cover {
 	/* Header: cover text wrapper. */
 	.wp-block-cover__inner-container {
-		width: auto;
+		max-width: 1020px;
 
+		.wp-block-group {
+			width: fit-content;
+		}
+		@media only screen and (max-width: 1020px) {
+			.wp-block-group {
+				width: 100%;
+			}
+		}
 		/* Site title. */
 		.wp-block-site-title {
 			font-family: ABeeZee, sans-serif;
